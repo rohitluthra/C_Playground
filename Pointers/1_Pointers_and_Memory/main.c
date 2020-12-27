@@ -12,6 +12,8 @@ void concept_of_null();
 void pointer_to_void();
 void predefined_pointer_related_types();
 
+void pointer_operators();
+
 int main(int argc, char* argv[]) {
 
     /* Secrets of printf
@@ -39,6 +41,8 @@ int main(int argc, char* argv[]) {
 
      * */
 
+    pointer_operators();
+
     display_nth_character();
 
     declare_a_pointer();
@@ -56,22 +60,6 @@ int main(int argc, char* argv[]) {
     predefined_pointer_related_types();
 
     return 0;
-}
-
-void predefined_pointer_related_types() {
-
-    /* size_t
-
-     * The type size_t represents the maximum size any object can be in C.
-     * It is an unsigned integer since negative numbers do not make sense in this context.
-     * Its purpose is to provide a portable means of declaring a size consistent with the addressable area of memory
-     * available on a system.
-     *
-     * The size_t type is used as the return type for the sizeof operator and as the argument to many functions,
-     * including malloc and strlen, among others.*/
-
-    typedef unsigned int size_t;
-
 }
 
 void display_nth_character()
@@ -100,6 +88,14 @@ void declare_a_pointer()
     int* pi_1;
     int * pi_2;
     int*pi_3;
+
+    /* Following are same thing */
+    const int *pci;
+    int const *pci_1;
+
+    /* Constant pointer to a constant integer  */
+    const int limit =100;
+    const int * const cpci = &limit;
 }
 
 void read_a_declaration()
@@ -195,4 +191,44 @@ void pointer_to_void()
     size_t size = sizeof(void*); // Legal
 
     size_t size_1 = sizeof(void); // Illegal
+}
+
+void pointer_operators() {
+    /*
+     * "*"              -> Used to decalre a pointer
+     * "*"              -> Used to dereference a pointer
+     * "->"             -> Used to access field of a structure referenced by a pointer
+     * "+"              -> Used to increment a pointer
+     * "-"              -> Used to decrement a pointer
+     * "== !="          -> Equal or not equal
+     * "(data type)"    -> pointer type conversion
+     * */
+
+    /*
+     *  Type    Size
+        byte    1
+        char    1
+        short   2
+        int     4
+        long    8
+        float   4
+        double  8
+     * */
+
+}
+
+void predefined_pointer_related_types() {
+
+    /* size_t
+
+     * The type size_t represents the maximum size any object can be in C.
+     * It is an unsigned integer since negative numbers do not make sense in this context.
+     * Its purpose is to provide a portable means of declaring a size consistent with the addressable area of memory
+     * available on a system.
+     *
+     * The size_t type is used as the return type for the sizeof operator and as the argument to many functions,
+     * including malloc and strlen, among others.*/
+
+    typedef unsigned int size_t;
+
 }
