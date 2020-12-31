@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -11,7 +10,6 @@ void dereference_a_Pointer_Using_the_Indirection_Operator();
 void concept_of_null();
 void pointer_to_void();
 void predefined_pointer_related_types();
-
 void pointer_operators();
 
 int main(int argc, char* argv[]) {
@@ -106,7 +104,7 @@ void read_a_declaration()
      *    1. pci is a variables (pci)
      *    2. pci is pointer variable (*pci)
      *    3. pci is a pointer variable to an integer (int *pci)
-     *    4. pci is pointer variable ti a constant integer (const int *pci)
+     *    4. pci is pointer variable to a constant integer (const int *pci)
      ***********************************************************************************************************************/
     const  int *pci;
 }
