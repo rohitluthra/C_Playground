@@ -31,6 +31,11 @@ char *realloc_to_resize_an_array();
 void display_array(int arr[], int size);
 
 void display_input(char* arr, int size);
+
+void one_d_array_of_pointers();
+
+void two_dimensional_array_notation();
+
 /**********************************************************************************************************************
  * Function Declaration Ends
  **********************************************************************************************************************/
@@ -69,7 +74,72 @@ int main(int argc, char *argv[]) {
     printf("\n");
 
 
+    // ---------------------------------------------------------------------------------------------------------------
+    printf("Using a One-Dimensional Array of Pointers:  \n");
+    one_d_array_of_pointers();
+    display_input(input, 17);
+    printf("\n");
+
+    // ---------------------------------------------------------------------------------------------------------------
+    printf("Two-dimensional array notation:  \n");
+    two_dimensional_array_notation();
+    display_input(input, 17);
+    printf("\n");
+
+
     return 0;
+}
+
+void two_dimensional_array_notation() {
+
+    /*
+     * The array is stored in row-column order. That is, the first row is stored sequentially in memory followed by the second row.
+     *
+     * arr[i][j]  =>   address of arr + (i * size of row) + (j * size of column);
+     * */
+
+    int matrix[2][5] = {{1,2,3,4,5},{6,7,8,9,10}};
+
+    for(int i=0; i<2; i++) {
+        for(int j=0; j<5; j++) {
+            printf("matrix[%d][%d] Address: %p Value: %d\n", i, j, &matrix[i][j], matrix[i][j]);
+        }
+    }
+
+
+    /*  The expression, (*pmatrix), declares a pointer to an array. Combined with the rest of the declaration,
+     *  pmatrix is defined as a pointer to a two-dimensional array of integers with five elements per column.
+     *
+     *  If we had left the parentheses off, we would have declared a five-element array of pointers to integers.
+     *  The size of the first dimension is 2 since we know the dimensions of the matrix.
+     *
+     *  If a different size is used to access the array, then the results are unpredictable.*/
+    int (*pmatrix)[5] = matrix;
+
+}
+
+void one_d_array_of_pointers() {
+
+    int *arr[5];
+
+    /*
+     * Since arr was declared as an array of pointers, arr[i] returns an address.
+     * When we dereference a pointer such as *arr[i], we get the contents at that address.
+     * */
+
+    for (int i = 0; i< 5; i++){
+        arr[i] = (int *) malloc(sizeof(int));
+        *arr[i] = i;
+
+        //or
+
+    /*
+        *(arr+i) = (int*)malloc(sizeof(int));
+
+        **(arr+i) = i;
+
+     * */
+    }
 }
 
 char *realloc_to_resize_an_array() {
