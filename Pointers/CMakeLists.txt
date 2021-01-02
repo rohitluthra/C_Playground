@@ -15,4 +15,4 @@ include_directories(8_Odds_And_Ends)
 
 add_executable(Pointers
         1_Pointers_and_Memory/main.c
-        README.md 2_Dynamic_Memory_Management_In_C/main.c)
+        README.md 2_Dynamic_Memory_Management_In_C/main.c 3_Pointers_And_Functions/main.c)
