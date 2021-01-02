@@ -18,6 +18,19 @@ void personalized_free_function(void **i);
 
 void declaring_function_pointer();
 
+int (*f7)(int); // function pointer
+int square_demo(int);
+typedef int(*func_ptr)(); // creating typedef
+
+typedef int (*fptrOperation)(int,int);
+int add(int num1, int num2);
+int subtract(int num1, int num2);
+int do_nothing (int num1, int num2);
+int compute(fptrOperation operation, int num1, int num2);
+
+fptrOperation select(char opcode);
+
+
 int main (int argc, char * argv[])
 {
     /*
@@ -59,7 +72,29 @@ int main (int argc, char * argv[])
     declaring_function_pointer();
 
 
+    fptrOperation addition= add;
+    fptrOperation subtraction = subtract;
+
+    printf("Addition: %d \n ", compute(addition, 5, 5));
+    printf("Subtraction: %d \n ", compute(subtraction, 5, 5));
+
+    printf("Using returning function: Addition: %d \n ", compute(select('+'), 5, 5));
+    printf("Using returning function: Subtraction: %d \n ", compute(select('-'), 5, 5));
+
+
+
     return 0;
+}
+int compute(fptrOperation operation, int num1, int num2) {
+    return operation(num1, num2);
+}
+
+fptrOperation select(char opcode) {
+    switch(opcode) {
+        case '+': return add;
+        case '-': return subtract;
+    }
+    return  do_nothing;
 }
 
 void declaring_function_pointer() {
@@ -71,10 +106,54 @@ void declaring_function_pointer() {
      *
      * When function pointers are used, the programmer must be careful to ensure it is used properly because C
      * does not check to see whether the correct parameters are passed.
-     *
-     *
+
+
+    int     (*f1)   (double); // passed a double and returns an int
+    void    (*f2)   (char *); // takes in character pointer
+    double* (*f3)   (int, int); // passed two integers and returns a pointer to double
+
      * */
 
+
+    /* Do not confuse following
+     * The whitespace within these expressions can be rearranged.
+     *
+
+    int* f4(); // function returning pointer to int
+
+    int (*f5); // function pointer that returns int
+
+    int* (*f6); // function pointer that return pointer to int
+
+     * */
+
+    /* Using function pointer
+     *
+     *  not square_demo() but square_demo. The compiler will effectively ignore the address-of operator (&) when used in this context.
+     *  f7 = &square_demo;
+    */
+    f7 = square_demo;
+
+    func_ptr f8;
+    f8 = square_demo;
+
+}
+
+int square_demo(int n)
+{
+    return n*n;
+}
+
+int add(int num1, int num2) {
+    return num1 + num2;
+}
+
+int subtract(int num1, int num2) {
+    return num1 - num2;
+}
+
+int do_nothing (int num1, int num2){
+    return 0;
 }
 
 void personalized_free_function(void **i) {
