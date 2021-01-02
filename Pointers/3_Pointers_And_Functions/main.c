@@ -46,4 +46,3 @@ int* allocate_array(int size, int value) {
      * */
     return array;
 }
-
