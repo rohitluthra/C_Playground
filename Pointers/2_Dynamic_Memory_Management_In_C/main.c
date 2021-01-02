@@ -1,11 +1,26 @@
-//
-// Created by Rohit Luthra on 12/27/20.
-//
+/**********************************************************************************************************************
+ * Description:
+ *      - This file contains methods for understanding dynamic memory allocation.
+ *      - It aims to explain malloc, realloc, calloc and free functions.
+ *      - Dynamic Memory Allocation:
+ *          - The basic steps used for dynamic memory allocation in C are:
+ *              1. Use a malloc type function to allocate memory
+ *              2. Use this memory to support the application
+ *              3. Deallocate the memory using the free function
+ * Creator:
+ *      - Rohit Luthra
+ **********************************************************************************************************************/
 
-#include <stdio.h>
+/**********************************************************************************************************************
+ * Include Files
+ **********************************************************************************************************************/
+#include "stdio.h"
+#include "stdlib.h"
 #include <string.h>
-#include <stdlib.h>
 
+/**********************************************************************************************************************
+ * Function Declaration Starts
+ **********************************************************************************************************************/
 int allocate_memory();
 
 void memory_leak();
@@ -24,13 +39,10 @@ void deallocating_memory_using_the_free_function();
 
 void dangling_pointer();
 
-/*
- * Dynamic Memory Allocation
-        The basic steps used for dynamic memory allocation in C are:
-        1. Use a malloc type function to allocate memory
-        2. Use this memory to support the application
-        3. Deallocate the memory using the free function
- * */
+/**********************************************************************************************************************
+ * Function Declaration Ends
+ **********************************************************************************************************************/
+
 
 int main (int argc, char* argv [])
 {

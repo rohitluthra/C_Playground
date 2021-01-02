@@ -1,43 +1,64 @@
+/**********************************************************************************************************************
+ * Description:
+ *      - This file contains methods for understanding relationship between memory and pointers.
+ *      - Secrets of printf:
+ *          \   escape the next character
+ *          \\  print a backslash
+ *          "   start or end of string
+ *          \"  print a double quote
+ *          ’   start or end a character constant
+ *          \’  print a single quote
+ *          %   start a format specification
+ *          \%  print a percent sign
+ *          %c  print a single character
+ *          %d  print a decimal (base 10) number
+ *          %e  print an exponential floating-point number
+ *          %f  print a floating-point number
+ *          %g  print a general-format floating-point number
+ *          %i  print an integer in base 10
+ *          %o  print a number in octal (base 8)
+ *          %s  print a string of characters
+ *          %u  print an unsigned decimal (base 10) number
+ *          %x  print a number in hexi-decimal (base 16)
+ *          %%  print a percent sign (\% also works)
+ *
+ * Creator:
+ *      - Rohit Luthra
+ **********************************************************************************************************************/
+
+/**********************************************************************************************************************
+ * Include Files
+ **********************************************************************************************************************/
 #include <stdio.h>
 #include <string.h>
 
 
+/**********************************************************************************************************************
+ * Function Declaration Starts
+ **********************************************************************************************************************/
 void display_nth_character();
+
 void declare_a_pointer();
+
 void read_a_declaration();
+
 void address_of_pointer();
+
 void dereference_a_Pointer_Using_the_Indirection_Operator();
+
 void concept_of_null();
+
 void pointer_to_void();
+
 void predefined_pointer_related_types();
+
 void pointer_operators();
 
-int main(int argc, char* argv[]) {
+/**********************************************************************************************************************
+ * Function Declaration Ends
+ **********************************************************************************************************************/
 
-    /* Secrets of printf
-     *
-     *  \   escape the next character
-        \\  print a backslash
-        "   start or end of string
-        \"  print a double quote
-        ’   start or end a character constant
-        \’  print a single quote
-        %   start a format specification
-        \%  print a percent sign
-
-        %c  print a single character
-        %d  print a decimal (base 10) number
-        %e  print an exponential floating-point number
-        %f  print a floating-point number
-        %g  print a general-format floating-point number
-        %i  print an integer in base 10
-        %o  print a number in octal (base 8)
-        %s  print a string of characters
-        %u  print an unsigned decimal (base 10) number
-        %x  print a number in hexidecimal (base 16)
-        %%  print a percent sign (\% also works)
-
-     * */
+int main(int argc, char *argv[]) {
 
     pointer_operators();
 
@@ -60,18 +81,16 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
-void display_nth_character()
-{
+void display_nth_character() {
     /***********************************************************************************************************************
    * - Displaying nth Character
    * ***********************************************************************************************************************/
     char *names[] = {"Rohit", "Jones", "Alex"};
-    printf ("%c \n ", *(*(names + 1)+2));
-    printf ("%c \n ", names[1][2]);
+    printf("%c \n ", *(*(names + 1) + 2));
+    printf("%c \n ", names[1][2]);
 }
 
-void declare_a_pointer()
-{
+void declare_a_pointer() {
     /***********************************************************************************************************************
      * * - Declaring a Pointer
      * * - The use of white space is a matter of user preference.
@@ -83,21 +102,20 @@ void declare_a_pointer()
      * *   However, the pointer type has been specified and the compiler will frequently complain when the pointer is not used correctly.
      * ***********************************************************************************************************************/
     int *pi; // Initial value is NULL
-    int* pi_1;
-    int * pi_2;
-    int*pi_3;
+    int *pi_1;
+    int *pi_2;
+    int *pi_3;
 
     /* Following are same thing */
     const int *pci;
     int const *pci_1;
 
     /* Constant pointer to a constant integer  */
-    const int limit =100;
-    const int * const cpci = &limit;
+    const int limit = 100;
+    const int *const cpci = &limit;
 }
 
-void read_a_declaration()
-{
+void read_a_declaration() {
     /***********************************************************************************************************************
      * - How to Read a Declaration
      * - Always read it backwards
@@ -106,16 +124,15 @@ void read_a_declaration()
      *    3. pci is a pointer variable to an integer (int *pci)
      *    4. pci is pointer variable to a constant integer (const int *pci)
      ***********************************************************************************************************************/
-    const  int *pci;
+    const int *pci;
 }
 
-void address_of_pointer(){
+void address_of_pointer() {
     int num;
     int *pi = &num;
 }
 
-void dereference_a_Pointer_Using_the_Indirection_Operator()
-{
+void dereference_a_Pointer_Using_the_Indirection_Operator() {
     /*
      * The indirection operator, *, returns the value pointed to by a pointer variable.
      * */
@@ -123,15 +140,14 @@ void dereference_a_Pointer_Using_the_Indirection_Operator()
     int num = 5;
     int *numP = &num;
 
-    printf("%d \n",*numP); // Displays 5
+    printf("%d \n", *numP); // Displays 5
 
     *numP = 200;
-    printf("%d\n",num); // Displays 200
+    printf("%d\n", num); // Displays 200
 
 }
 
-void concept_of_null()
-{
+void concept_of_null() {
     /*
      * 6 Types of Null
      *      The null concept
@@ -161,15 +177,12 @@ void concept_of_null()
     int *temp = NULL;
 
     if (temp) {// Not NUll
+    } else {//Null
     }
-
-    else {//Null
-        }
 
 }
 
-void pointer_to_void()
-{
+void pointer_to_void() {
     /*
      * A pointer to void is a general-purpose pointer used to hold references to any data type. An example of a pointer to void is shown below:
      *      void *pv;
@@ -182,11 +195,11 @@ void pointer_to_void()
     int *pi = &num;
     printf("Value of pi: %p\n", pi);
 
-    void* pv = pi;
-    pi = (int*) pv;
+    void *pv = pi;
+    pi = (int *) pv;
     printf("Value of pi: %p\n", pi);
 
-    size_t size = sizeof(void*); // Legal
+    size_t size = sizeof(void *); // Legal
 
     size_t size_1 = sizeof(void); // Illegal
 }
