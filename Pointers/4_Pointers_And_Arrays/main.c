@@ -116,6 +116,11 @@ void two_dimensional_array_notation() {
      *  If a different size is used to access the array, then the results are unpredictable.*/
     int (*pmatrix)[5] = matrix;
 
+    printf("matrix: %p\n", matrix);
+    printf("matrix + 1: %p\n", matrix + 1);
+
+    printf("pmatrix: %p", pmatrix);
+
 }
 
 void one_d_array_of_pointers() {
