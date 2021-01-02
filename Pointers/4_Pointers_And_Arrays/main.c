@@ -24,6 +24,13 @@ void pointer_notation_arrays();
 
 void difference_between_pointers_and_arrays();
 
+void malloc_to_create_one_d_array();
+
+char *realloc_to_resize_an_array();
+
+void display_array(int arr[], int size);
+
+void display_input(char* arr, int size);
 /**********************************************************************************************************************
  * Function Declaration Ends
  **********************************************************************************************************************/
@@ -49,7 +56,75 @@ int main(int argc, char *argv[]) {
     printf("Difference between Pointer and Arrays: \n");
     difference_between_pointers_and_arrays();
     printf("\n");
+
+    // ---------------------------------------------------------------------------------------------------------------
+    printf("Using malloc to Create a One-Dimensional Array: \n");
+    malloc_to_create_one_d_array();
+    printf("\n");
+
+    // ---------------------------------------------------------------------------------------------------------------
+    printf("Using the realloc Function to Resize an Array: \n");
+    char * input = realloc_to_resize_an_array();
+    display_input(input, 17);
+    printf("\n");
+
+
     return 0;
+}
+
+char *realloc_to_resize_an_array() {
+
+    const size_t sizeIncrement = 10;        // The size of the initial buffer and the amount it will be incremented by when the buffer needs to be enlarged
+    char *buffer = malloc(sizeIncrement);   // A pointer to the characters read in
+    char *current_position = buffer;        // A pointer to the next free position in the buffer
+    size_t maximum_length = sizeIncrement;  // The maximum number of characters that can be safely stored in the buffer
+    size_t length = 0;                      // The number of characters read in
+    int character;                          // The last character read in
+
+    if (current_position == NULL) {
+        return NULL;
+    }
+    while (1) {
+        character = fgetc(stdin);
+        if (character == '\n') {
+            break;
+        }
+        if (++length >= maximum_length) {
+            char *newBuffer = realloc(buffer, maximum_length += sizeIncrement);
+            if (NULL == newBuffer) {
+                free(buffer);
+                return NULL;
+            }
+
+            current_position = newBuffer + (current_position - buffer);
+            buffer = newBuffer;
+        }
+        *current_position++ = character;
+    }
+    *current_position = '\0';
+    return buffer;
+}
+
+void malloc_to_create_one_d_array() {
+    /* This technique creates a region of memory and treats it as an array. */
+
+    int *pv = (int *) malloc(5 * sizeof(int));
+    for (int i = 0; i < 5; i++) {
+        pv[i] = i + 1;
+
+        // or
+
+        /*
+         * [ *(pv+i) ] ---------- vs ---------- [ *pv + i ]
+         * Dereference pointer has higher precedence over + operator. hence we have to use brackets in order to force increment.
+         * */
+        *(pv + i) = i + 1; // Same statement as above
+
+    }
+    printf("Display Array: \n");
+    display_array(pv, 5);
+    free(pv);
+
 }
 
 void difference_between_pointers_and_arrays() {
@@ -136,4 +211,18 @@ void one_dimensional_array() {
     printf("%lu \n", sizeof(vector) / sizeof(int));
 
 
+}
+
+void display_array(int arr[], int size) {
+    for (int i = 0; i < size; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+}
+
+void display_input(char* arr, int size) {
+    for (int i = 0; i < size; i++)
+    {
+        printf("%c", arr[i]);
+    }
 }
