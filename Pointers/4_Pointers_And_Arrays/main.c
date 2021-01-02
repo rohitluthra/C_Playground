@@ -1,6 +1,6 @@
 /**********************************************************************************************************************
  * Description:
- *      - This file contains methods for understanding relationship between functions and arrays.
+ *      - This file contains methods for understanding relationship between pointers and arrays.
  *
  * Creator:
  *      - Rohit Luthra
