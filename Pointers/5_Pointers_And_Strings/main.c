@@ -56,8 +56,7 @@ int main(int argc, char *argv[]) {
     // ---------------------------------------------------------------------------------------------------------------
     printf("standard_string_operation: \n");
     standard_string_operation();
-    printf("\n");
-
+    printf( "\n");
 
     return 0;
 }
