@@ -56,16 +56,89 @@ int main(int argc, char *argv[]) {
     // ---------------------------------------------------------------------------------------------------------------
     printf("standard_string_operation: \n");
     standard_string_operation();
-    printf( "\n");
+    printf("\n");
 
     return 0;
 }
 
 void standard_string_operation() {
 
-/*
-    Comparing String
-*/
+    /* Comparing String
+     *
+     *     int strcmp(const char *s1, const char *s2);
+     *
+     * Negative
+     *      If s1 precedes s2 lexicographically (alphabetically)
+     * Zero
+     *      If the two strings are equal
+     * Positive
+     *      If s1 follows s2 lexicographically
+     */
+
+    char command[16];
+
+    printf("Enter a Command: ");
+    scanf("%s", command);
+
+    if (strcmp(command, "Quit") == 0) // if(command == "Quit") compares addresses, not value
+    {
+        printf("The command was Quit");
+    }
+    else {
+        printf("The command was not Quit");
+    }
+
+    /* Copying String
+     *
+     * char* strcpy(char *s1, const char *s2);
+     *      1. Read in the string using a large array of char
+     *      2. Use malloc to allocate just the right amount of memory
+     *      3. Use strcpy to copy the string into the dynamically allocated memory
+     *
+     *
+    */
+
+    char name[32];
+    char* names[30];
+
+    size_t count = 0;
+    printf("\nPrint a name: ");
+    scanf("%s", name);
+    names[count] = (char *) malloc(strlen(name)+ 1 );
+    strcpy(names[count], name);
+    printf("Copied String: %s", names[count]);
+
+    // free(names[count]);
+
+    count++;
+
+    // Two pointers can reference the same string. When two pointers reference the same location, this is called aliasing.
+    // Here, page_header[12] and page_header[13] points to "Compound interest" in String Literal.
+    char *page_header[300];
+    page_header[12] = "Compound Interest";
+    page_header[13] = page_header[12];
+
+    /* Concatenating Strings
+     *
+     * char *strcat(char *s1, const char *s2);
+     *
+     * - The function does not allocate memory. This means the first string must be large enough to hold the concatenated
+     *   results or it may write past the end of the string, resulting in unpredictable behavior.
+     * */
+    printf("\n");
+
+    char * error = "Error: ";
+    char * error_message = "Not Enough Memory";
+
+    char * buffer = (char *) malloc(strlen(error) + strlen(error_message) + 1);
+    strcpy(buffer, error);
+    strcat(buffer, error_message);
+
+    printf("%s\n", buffer);
+    printf("%s\n", error);
+    printf("%s\n", error_message);
+
+
 
 }
 
@@ -97,10 +170,15 @@ void string_initialization() {
      * */
     char header[] = "This is String Literal";
     printf("String literal array: %s \n", header);
+    header[0] = 'L'; // Ths is allowed
+    printf("---------------- header[] = %s\n", header);
+
     // or
 
     char header_1[23];
     strcpy(header_1, "This is String Literal");
+    header_1[0] = 'L'; // Ths is allowed
+    printf("---------------- header[] = %s\n", header_1);
 }
 
 void string_declaration() {
@@ -156,5 +234,11 @@ void string_fundamentals() {
     /* sizeof is of unsigned integral type which is usually denoted by size_t */
     printf("size of \"char\": %lu  \n", sizeof(char));
     printf("size of \"a\": %lu  \n", sizeof('a'));
+
+    char character_literal = 'A';
+    char *String_literal = "A";
+
+    printf("character_literal: %c \n", character_literal);
+    printf("String_literal: %s \n ", String_literal);
 
 }
