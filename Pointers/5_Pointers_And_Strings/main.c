@@ -27,6 +27,12 @@ void summary_of_string_placement();
 
 void standard_string_operation();
 
+void passing_arguments_to_application(int argc, char** argv);
+
+void returning_string();
+
+char* return_a_literal(int code);
+
 /**********************************************************************************************************************
  * Function Declaration Ends
  **********************************************************************************************************************/
@@ -58,7 +64,58 @@ int main(int argc, char *argv[]) {
     standard_string_operation();
     printf("\n");
 
+    // ---------------------------------------------------------------------------------------------------------------
+    printf("passing_arguments_to_application: \n");
+    char * arg[] = {"process.exe", "-f", "names.txt", "limit=12" , "-verbose"};
+    passing_arguments_to_application(5, arg);
+    printf("\n");
+
+    // ---------------------------------------------------------------------------------------------------------------
+    printf("returning_string: \n");
+    returning_string();
+    printf("\n");
+
+
+
     return 0;
+}
+
+void returning_string() {
+
+    /*
+     * When a function returns a string, it returns the address of the string. The main concern is to return a valid string address.
+     * To do this, we can return a reference to either:
+     *      • A literal
+     *      • Dynamically allocated memory
+     *      • A local string variable
+     * */
+
+    return_a_literal(100);
+
+
+}
+
+
+char* return_a_literal(int code ) {
+    switch(code) {
+        case 100:
+            return "Boston Processing Center";
+        case 200:
+            return "Denver Processing Center";
+        case 300:
+            return "Atlanta Processing Center";
+
+    }
+    return "Code not present";
+
+}
+void passing_arguments_to_application(int argc, char** argv) {
+
+    for (int i = 0; i < argc; i++)
+    {
+        printf ("argv[%d] = %s\n", i, argv[i]);
+    }
+
 }
 
 void standard_string_operation() {
@@ -146,15 +203,15 @@ void summary_of_string_placement() {
 
     // IMPORTANT --------> "Header" is stored in String Literal Pool
 
-    // char *globalHeader = "Header";                                       s// Placed in Global Memory but points to string literal pool address
-    // char global_header_array[] = "Global Header";                        // Placed in Global Memory
+    // char *globalHeader = "Header";                                           // Placed in Global Memory but points to string literal pool address
+    // char global_header_array[] = "Global Header";                            // Placed in Global Memory
 
     // static char *static_header = "Header";                                  // Placed in Global Memory but pointers to header in String Literal Pool
     // static char static_array_header[] = "Static Char Array";                // Placed in Global Memory
 
     // char *local_header = "Header";                                          // Placed in Heap but points to string literal pool address
     // char local_array_header[] = "local array header";                       // Placed in Heap
-    // char *heap_header = (char *) malloc(strlen("heap header" + 1)); // Placed in Heap and address given by malloc in also in heap.So it points to address in heap.
+    // char *heap_header = (char *) malloc(strlen("heap header" + 1));         // Placed in Heap and address given by malloc in also in heap.So it points to address in heap.
 
     // strcpy(heap_header, "heap header");
 
@@ -216,8 +273,8 @@ void string_declaration() {
     const char *tab_header = "Sound"; // Immutable
     printf("%s\n", tab_header);
 
-    // 2.  Allocates memory and copies string "string2" into it, thus modifying it is valid.
-    char header[32] = "This is not string litral array";
+    // 2.  Allocates memory and copies string  into it, thus modifying it is valid.
+    char header[32] = "This is not string literal array";
     header[0] = 'L'; // Ths is allowed
     printf("header[32] = %s\n", header);
 

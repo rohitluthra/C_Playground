@@ -66,7 +66,7 @@ int main(int argc, char *argv[]) {
      * • Returning a pointer to a local variable
      * • Returning a pointer but failing to free it
      *
-     * - Returning dynamically allocated memory from the function means the function’s caller is responsible for deal‐ locating it.
+     * - Returning dynamically allocated memory from the function means the function’s caller is responsible for deallocating it.
      * - So we need to free(vector)
      * */
     int *vector = allocate_array(5, 0); //Dynamically created address space
@@ -294,7 +294,7 @@ int *allocate_array(int size, int value) {
      *    function but allocate it outside of the stack frame, eliminating the possibility of another function overwriting
      *    the variable’s value:
      *
-     *  - However, this will not always work. Every time the rray function is called, it will reuse the array.
+     *  - However, this will not always work. Every time the array function is called, it will reuse the array.
      *    This effectively invalidates any previous calls to the function. In addition, the static array must be declared
      *    with a fixed size. This will limit the function’s ability to handle various array sizes.
      * */

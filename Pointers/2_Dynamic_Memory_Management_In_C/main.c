@@ -127,13 +127,17 @@ void memory_leak() {
     char *chunk;
     chunk = (char*) malloc(1000000);
     printf("Allocating\n");
+    free (chunk);
 }
 
 void loosing_pointer() {
     /*
      * Loosing a Pointer
      * */
-    int *pi = (int*) malloc(sizeof(int)); *pi = 5;
+    int *pi = (int*) malloc(sizeof(int));
+
+    *pi = 5;
+    // Lost old pi malloc address, So we need to free before assigning new malloc address.
 
     pi = (int*) malloc(sizeof(int));
 
@@ -190,7 +194,7 @@ void calloc_function() {
      * and the last argument is the number of bytes to be set.
      * */
     int *pi_1 = malloc(5 * sizeof(int));
-    memset(pi_1, 0, 5* sizeof(int));
+    memset(pi_1, 0, 5 * sizeof(int));
 }
 
 void realloc_function() {

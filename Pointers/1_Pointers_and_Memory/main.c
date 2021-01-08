@@ -59,24 +59,50 @@ void pointer_operators();
  **********************************************************************************************************************/
 
 int main(int argc, char *argv[]) {
-
+    // ---------------------------------------------------------------------------------------------------------------
+    printf("pointer_operators: \n");
     pointer_operators();
+    printf("\n");
 
+    // ---------------------------------------------------------------------------------------------------------------
+    printf(" display_nth_character: \n");
     display_nth_character();
+    printf("\n");
 
+    // ---------------------------------------------------------------------------------------------------------------
+    printf(" declare_a_pointer: \n");
     declare_a_pointer();
+    printf("\n");
 
+    // ---------------------------------------------------------------------------------------------------------------
+    printf("read_a_declaration:  \n");
     read_a_declaration();
+    printf("\n");
 
+    // ---------------------------------------------------------------------------------------------------------------
+    printf("address_of_pointer: \n");
     address_of_pointer();
+    printf("\n");
 
+    // ---------------------------------------------------------------------------------------------------------------
+    printf("dereference_a_Pointer_Using_the_Indirection_Operator:  \n");
     dereference_a_Pointer_Using_the_Indirection_Operator();
+    printf("\n");
 
+    // ---------------------------------------------------------------------------------------------------------------
+    printf("concept_of_null:  \n");
     concept_of_null();
+    printf("\n");
 
+    // ---------------------------------------------------------------------------------------------------------------
+    printf("pointer_to_void: \n");
     pointer_to_void();
+    printf("\n");
 
+    // ---------------------------------------------------------------------------------------------------------------
+    printf("predefined_pointer_related_types: \n");
     predefined_pointer_related_types();
+    printf("\n");
 
     return 0;
 }
@@ -101,18 +127,21 @@ void declare_a_pointer() {
      * *        its contents are valid.
      * *   However, the pointer type has been specified and the compiler will frequently complain when the pointer is not used correctly.
      * ***********************************************************************************************************************/
-    int *pi; // Initial value is NULL
-    int *pi_1;
-    int *pi_2;
-    int *pi_3;
+    int *pi = NULL; // Initial value is NULL
+    int *pi_1 = NULL;;
+    int *pi_2 = NULL;;
+    int *pi_3 = NULL;;
 
     /* Following are same thing */
-    const int *pci;
-    int const *pci_1;
+    const int *pci = NULL;;
+    int const *pci_1 = NULL;;
 
     /* Constant pointer to a constant integer  */
     const int limit = 100;
     const int *const cpci = &limit;
+
+    printf("*pi: %p\n,*pi_1: %p\n,*pi_2: %p\n,*pi_3: %p\n,*pci: %p\n,*pci_1: %p\n, limit: %d\n, cpci: %p \n",pi,pi_1,pi_2,pi_3,pci,pci_1, limit, cpci);
+
 }
 
 void read_a_declaration() {
@@ -124,12 +153,12 @@ void read_a_declaration() {
      *    3. pci is a pointer variable to an integer (int *pci)
      *    4. pci is pointer variable to a constant integer (const int *pci)
      ***********************************************************************************************************************/
-    const int *pci;
+    // const int *pci;
 }
 
 void address_of_pointer() {
-    int num;
-    int *pi = &num;
+    // int num;
+    // int *pi = &num;
 }
 
 void dereference_a_Pointer_Using_the_Indirection_Operator() {
@@ -199,14 +228,14 @@ void pointer_to_void() {
     pi = (int *) pv;
     printf("Value of pi: %p\n", pi);
 
-    size_t size = sizeof(void *); // Legal
+    // size_t size = sizeof(void *); // Legal
 
-    size_t size_1 = sizeof(void); // Illegal
+    // size_t size_1 = sizeof(void); // Illegal
 }
 
 void pointer_operators() {
     /*
-     * "*"              -> Used to decalre a pointer
+     * "*"              -> Used to declare a pointer
      * "*"              -> Used to dereference a pointer
      * "->"             -> Used to access field of a structure referenced by a pointer
      * "+"              -> Used to increment a pointer
@@ -240,6 +269,6 @@ void predefined_pointer_related_types() {
      * The size_t type is used as the return type for the sizeof operator and as the argument to many functions,
      * including malloc and strlen, among others.*/
 
-    typedef unsigned int size_t;
+    // typedef unsigned int size_t;
 
 }

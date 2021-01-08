@@ -193,7 +193,7 @@ void malloc_to_create_one_d_array() {
          * [ *(pv+i) ] ---------- vs ---------- [ *pv + i ]
          * Dereference pointer has higher precedence over + operator. hence we have to use brackets in order to force increment.
          * */
-        *(pv + i) = i + 1; // Same statement as above
+        // *(pv + i) = i + 1; // Same statement as above
 
     }
     printf("Display Array: \n");
@@ -254,6 +254,8 @@ void pointer_notation_arrays() {
     for (int i = 0; i < 5; i++) {
         printf("Before: %d ", pv[i]);
         *pv++ *= value;
+        // *pv = *pv * value ;
+        // *pv++ ;
         printf("After %d ", pv[i]);
         printf("\n");
 
