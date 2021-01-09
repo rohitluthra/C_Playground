@@ -94,6 +94,7 @@ void how_memory_is_allocated_for_structure() {
     printf("Size of alternatePerson: %lu \n", sizeof(AlternatePerson));
 
 
+
 }
 
 void introduction() {
