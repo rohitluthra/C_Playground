@@ -18,10 +18,109 @@
  **********************************************************************************************************************/
 
 
+void introduction();
+
+void how_memory_is_allocated_for_structure();
+
 /**********************************************************************************************************************
  * Function Declaration Ends
  **********************************************************************************************************************/
 
 int main(int argc, char *argv[]) {
+    // ---------------------------------------------------------------------------------------------------------------
+    printf("introduction: \n");
+    introduction();
+    printf("\n");
 
+    // ---------------------------------------------------------------------------------------------------------------
+    printf("how_memory_is_allocated_for_structure: \n");
+    how_memory_is_allocated_for_structure();
+    printf("\n");
+
+    // ---------------------------------------------------------------------------------------------------------------
+    printf(": \n");
+    printf("\n");
+    // ---------------------------------------------------------------------------------------------------------------
+    printf(": \n");
+    printf("\n");
+    // ---------------------------------------------------------------------------------------------------------------
+    printf(": \n");
+    printf("\n");
+    // ---------------------------------------------------------------------------------------------------------------
+    printf(": \n");
+    printf("\n");
+    // ---------------------------------------------------------------------------------------------------------------
+    printf(": \n");
+    printf("\n");
+
+
+}
+
+void how_memory_is_allocated_for_structure() {
+    /*
+     * When a structure is allocated memory, the amount allocated to the structure is at minimum the sum of the size of
+     * its individual fields. However, the size is often larger than this sum because padding can occur between fields
+     * of a structure.
+     *
+     * This padding can result from the need to align certain data types on specific boundaries.
+     * For example ->
+     *      a short is typically aligned on an address evenly divisible by two while
+     *      an integer is aligned on an address even divisible by four.
+     *
+     * Several implications are related to this allocation of extra memory:
+     *      • Pointer arithmetic must be used with care
+     *      • Arrays of structures may have extra memory between their elements
+     */
+
+    typedef struct {
+
+        char * firstname;
+        char * lastname;
+        unsigned int  age;
+
+    } Person;
+
+    typedef struct _alternatePerson {
+        char* firstName;
+        char* lastName;
+        char* title;
+        short age;
+    } AlternatePerson;
+
+    printf("size of char: %lu \n", sizeof(char));
+    printf("size of short: %lu \n", sizeof(short));
+
+    printf("Size of person: %lu \n ", sizeof(Person));
+    printf("Size of alternatePerson: %lu \n", sizeof(AlternatePerson));
+
+
+}
+
+void introduction() {
+
+    typedef struct {
+
+        char * firstname;
+        char * lastname;
+        unsigned int  age;
+
+    } Person;
+
+    /* Creating Instance */
+    // Person person;
+
+    /*Alternately, we can declare a pointer to a Person and allocate memory for it, as shown
+    below:*/
+
+    Person * person_1;
+    person_1 = (Person * ) malloc(sizeof(Person));
+    person_1->firstname = (char *) malloc(strlen("Rohit"));
+
+    // or
+
+    (*person_1).firstname = (char *) malloc(strlen("Rohit"));
+
+    strcpy(person_1->firstname, "Rohit");
+
+    free(person_1);
 }
