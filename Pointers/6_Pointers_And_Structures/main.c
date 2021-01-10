@@ -22,6 +22,8 @@ void introduction();
 
 void how_memory_is_allocated_for_structure();
 
+void avoiding_malloc_free_overhead();
+
 /**********************************************************************************************************************
  * Function Declaration Ends
  **********************************************************************************************************************/
@@ -38,7 +40,8 @@ int main(int argc, char *argv[]) {
     printf("\n");
 
     // ---------------------------------------------------------------------------------------------------------------
-    printf(": \n");
+    printf("avoiding_malloc_free_overhead: \n");
+    avoiding_malloc_free_overhead();
     printf("\n");
     // ---------------------------------------------------------------------------------------------------------------
     printf(": \n");
@@ -55,6 +58,26 @@ int main(int argc, char *argv[]) {
 
 
 }
+
+void avoiding_malloc_free_overhead() {
+
+    typedef struct {
+
+        char *firstname;
+        char *lastname;
+        unsigned int age;
+
+    } Person;
+
+    Person *list[10];
+    // Before Using this we need to initialize it.
+
+    for (int i = 0; i < 10; i++) {
+        list[i] == NULL;
+    }
+
+}
+
 
 void how_memory_is_allocated_for_structure() {
     /*
@@ -74,16 +97,25 @@ void how_memory_is_allocated_for_structure() {
 
     typedef struct {
 
-        char * firstname;
-        char * lastname;
-        unsigned int  age;
+        char *firstname;
+        char *lastname;
+        unsigned int age;
 
     } Person;
 
+    /*
+     *         AlternatePerson people[30];
+     *
+     *         for this structure looks like this:
+     *         people[0] takes 100, 104, 108, 112 (for 112, of which half is paddings its short)
+     *         people[1] takes 116, 120, 124, 128 (for 128, of which half is paddings its short)
+     *         .
+     *         . and so forth
+     * */
     typedef struct _alternatePerson {
-        char* firstName;
-        char* lastName;
-        char* title;
+        char *firstName;
+        char *lastName;
+        char *title;
         short age;
     } AlternatePerson;
 
@@ -92,8 +124,15 @@ void how_memory_is_allocated_for_structure() {
 
     printf("Size of person: %lu \n ", sizeof(Person));
     printf("Size of alternatePerson: %lu \n", sizeof(AlternatePerson));
+    AlternatePerson person = (AlternatePerson *) malloc(sizeof(AlternatePerson));
 
-
+    /*  Deallocate_structure
+     *      - You have to deeallocate individual memory not just the structure.
+     */
+    free(person.firstName);
+    free(person.lastName);
+    free(person.title);
+    free(person.age);
 
 }
 
@@ -101,9 +140,9 @@ void introduction() {
 
     typedef struct {
 
-        char * firstname;
-        char * lastname;
-        unsigned int  age;
+        char *firstname;
+        char *lastname;
+        unsigned int age;
 
     } Person;
 
@@ -113,8 +152,8 @@ void introduction() {
     /*Alternately, we can declare a pointer to a Person and allocate memory for it, as shown
     below:*/
 
-    Person * person_1;
-    person_1 = (Person * ) malloc(sizeof(Person));
+    Person *person_1;
+    person_1 = (Person *) malloc(sizeof(Person));
     person_1->firstname = (char *) malloc(strlen("Rohit"));
 
     // or

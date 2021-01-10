@@ -128,9 +128,11 @@ void declare_a_pointer() {
      * *   However, the pointer type has been specified and the compiler will frequently complain when the pointer is not used correctly.
      * ***********************************************************************************************************************/
     int *pi = NULL; // Initial value is NULL
-    int *pi_1 = NULL;;
-    int *pi_2 = NULL;;
-    int *pi_3 = NULL;;
+    int *pi_1 = NULL;
+    int *pi_2 = NULL;
+    int *pi_3 = NULL;
+
+    // Always a good practice to initialize pointer to NULL and check for NULL whenever you use it.
 
     /* Following are same thing */
     const int *pci = NULL;;
