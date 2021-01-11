@@ -36,6 +36,9 @@ void always_match_pointer_types();
 void bounded_pointers();
 
 int valid(void *ptr);
+
+void memory_deallocation_issues();
+
 /**********************************************************************************************************************
  * Function Declaration Ends
  **********************************************************************************************************************/
@@ -111,15 +114,21 @@ int main(int argc, char *argv[]) {
     printf("\n");
 
     // ---------------------------------------------------------------------------------------------------------------
-    printf(": \n");
+    printf("memory_deallocation_issues: \n");
+    memory_deallocation_issues();
     printf("\n");
-
-    // ---------------------------------------------------------------------------------------------------------------
-    printf(": \n");
-    printf("\n");
-
 
     return 0;
+}
+
+void memory_deallocation_issues() {
+    /* - This situation involves freeing same memory twice
+     *   Best way to deal with this is to always set a pointer to NULL after you free it.
+     *
+     * - Always clear the memory before deallocating it.
+     * */
+
+
 }
 
 void bounded_pointers() {
@@ -134,6 +143,7 @@ void bounded_pointers() {
             // Invalid pointer - error condition
         }
     }
+
 
 }
 
