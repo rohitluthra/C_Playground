@@ -1,9 +1,16 @@
 /*********************************************************************************************************************
 * Description:
-*      - This file contains random odds and evens in pointers.
-*
-* Creator:
-*      - Rohit Luthra
+*     - This file contains random odds and evens in pointers.
+*     - We will examine several topics related to pointers:
+            • Casting pointers
+            • Accessing hardware devices
+            • Aliasing and strict aliasing
+            • Use of the restrict keyword
+            • Threads
+            • Object-oriented techniques
+
+ Creator:
+      - Rohit Luthra
 **********************************************************************************************************************/
 
 /**********************************************************************************************************************
@@ -13,9 +20,6 @@
 #include "stdlib.h"
 #include "string.h"
 #include "assert.h"
-
-#define SIZE 32
-
 /**********************************************************************************************************************
  * Function Declaration Starts
  **********************************************************************************************************************/
